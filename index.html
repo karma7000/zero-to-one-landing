@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zero to One Company | 중화권·동남아 진출 컨설팅</title>
+<style>
+  :root{
+    --navy:#213E8F;
+    --navy-deep:#16295E;
+    --accent:#244580;
+    --cream:#EDE8DE;
+    --gray-panel:#C7C7C7;
+    --dark-text:#232326;
+    --mute-text:#5A5A5E;
+    --light-text:#C9D2E4;
+    --white:#FFFFFF;
+    --orange:#F3A522;
+    --black-band:#1F2326;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Pretendard","맑은 고딕","Malgun Gothic",sans-serif;
+    color:var(--dark-text);
+    line-height:1.6;
+    background:var(--white);
+  }
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+  section{padding:100px 0;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(22,41,94,0.92);
+    backdrop-filter:blur(6px);
+  }
+  .nav .container{
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .nav .logo{color:var(--white);font-weight:800;font-size:18px;letter-spacing:0.3px;}
+  .nav .logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{color:var(--light-text);font-size:14px;font-weight:600;transition:color .2s;}
+  .nav-links a:hover{color:var(--white);}
+  .nav-cta{
+    background:var(--orange);color:var(--navy-deep);
+    padding:9px 18px;border-radius:24px;font-size:13px;font-weight:800;
+    white-space:nowrap;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 60%,#2a4ea3 100%);
+    color:var(--white);
+    padding:180px 0 100px;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    letter-spacing:4px;color:var(--light-text);font-size:14px;font-weight:700;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:56px;font-weight:800;margin-bottom:24px;letter-spacing:-1px;
+  }
+  .hero .quote{font-size:19px;font-weight:700;margin-bottom:8px;}
+  .hero .quote.small{font-size:16px;font-weight:600;color:var(--light-text);margin-bottom:48px;}
+
+  .biz-card{
+    max-width:760px;margin:0 auto;background:var(--white);border-radius:18px;
+    padding:14px;box-shadow:0 30px 60px rgba(0,0,0,0.35);
+  }
+  .biz-card img{width:100%;display:block;border-radius:10px;}
+
+  .hero-ctas{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:15px 32px;border-radius:30px;font-weight:800;font-size:15px;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--orange);color:var(--navy-deep);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(243,165,34,0.35);}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,0.5);color:var(--white);}
+  .btn-ghost:hover{background:rgba(255,255,255,0.1);}
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .eyebrow-dark{color:var(--accent);font-weight:800;letter-spacing:2px;font-size:13px;margin-bottom:10px;}
+  .section-title{font-size:34px;font-weight:800;margin-bottom:16px;letter-spacing:-0.5px;}
+  .section-sub{color:var(--mute-text);font-size:16px;max-width:640px;margin-bottom:56px;}
+
+  /* ---------- ABOUT (Philosophy/Vision/Value) ---------- */
+  .about{background:var(--white);}
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;
+  }
+  .pvv-item{margin-bottom:34px;}
+  .pvv-item h4{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:8px;}
+  .pvv-item p{color:var(--mute-text);font-size:14.5px;}
+  .value-list{display:grid;gap:16px;margin-top:8px;}
+  .value-card{
+    background:var(--cream);border-radius:12px;padding:18px 20px;
+  }
+  .value-card b{color:var(--dark-text);font-size:15px;}
+  .value-card span{display:block;color:var(--mute-text);font-size:13.5px;margin-top:4px;}
+
+  .expert-box{
+    background:var(--navy);color:var(--white);border-radius:20px;padding:36px;margin-bottom:32px;
+  }
+  .expert-box h4{font-size:20px;font-weight:800;margin-bottom:14px;}
+  .expert-box p{color:var(--light-text);font-size:14.5px;margin-bottom:10px;}
+
+  .process-box{background:var(--cream);border-radius:20px;padding:32px;}
+  .process-box h4{font-size:18px;font-weight:800;margin-bottom:22px;}
+  .process-step{
+    display:flex;align-items:center;gap:18px;padding:16px 0;border-top:1px solid rgba(0,0,0,0.08);
+  }
+  .process-step:first-of-type{border-top:none;}
+  .process-num{font-size:26px;font-weight:800;color:var(--accent);width:52px;flex-shrink:0;}
+  .process-step .txt h5{font-size:14.5px;font-weight:800;margin-bottom:4px;}
+  .process-step .txt p{font-size:12.5px;color:var(--mute-text);}
+  .process-tag{
+    margin-left:auto;flex-shrink:0;width:76px;height:76px;border-radius:50%;
+    background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;
+    font-size:12px;font-weight:800;text-align:center;
+  }
+
+  /* ---------- GRS ---------- */
+  .grs{background:linear-gradient(160deg,var(--navy-deep) 0%,var(--navy) 100%);color:var(--white);}
+  .grs .section-title, .grs .eyebrow-dark{color:var(--white);}
+  .grs .eyebrow-dark{color:var(--orange);}
+  .grs .section-sub{color:var(--light-text);}
+  .grs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .grs-card{
+    background:var(--cream);border-radius:20px;padding:36px 28px;color:var(--dark-text);text-align:center;
+  }
+  .grs-circle{
+    width:88px;height:88px;border-radius:50%;background:var(--accent);color:var(--white);
+    display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:800;
+    margin:0 auto 20px;
+  }
+  .grs-card h4{font-size:19px;font-weight:800;margin-bottom:14px;}
+  .grs-card p{font-size:13.5px;color:var(--mute-text);}
+  .grs-footer{
+    margin-top:48px;text-align:center;font-size:18px;font-weight:800;color:var(--light-text);
+  }
+
+  /* ---------- 5-STEP ---------- */
+  .steps5{background:var(--gray-panel);}
+  .steps5-track{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;align-items:end;margin-bottom:8px;}
+  .step5-block{
+    background:var(--accent);color:var(--white);border-radius:10px 10px 0 0;padding:16px 14px;
+  }
+  .step5-block .tag{color:var(--orange);font-weight:800;font-size:12px;margin-bottom:8px;}
+  .step5-block .title{font-size:13.5px;font-weight:800;line-height:1.3;}
+  .steps5-desc{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+  .steps5-desc p{font-size:11.5px;color:var(--mute-text);}
+  .steps5-band{
+    margin-top:44px;background:var(--black-band);color:var(--white);border-radius:14px;
+    padding:26px 34px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  }
+  .steps5-band .left b{font-size:15px;}
+  .steps5-band .right{color:var(--light-text);font-size:13px;max-width:420px;text-align:right;}
+
+  /* ---------- OFFER / CTA ---------- */
+  .offer{background:var(--white);}
+  .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .offer h2{font-size:32px;font-weight:800;color:var(--navy);margin-bottom:14px;}
+  .offer .lead{font-size:15.5px;color:var(--dark-text);margin-bottom:26px;}
+  .promo-img{border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.15);}
+  .promo-img img{width:100%;display:block;}
+  .letter{background:var(--cream);border-radius:16px;padding:30px 34px;margin-top:26px;}
+  .letter p{font-size:13.5px;color:var(--mute-text);margin-bottom:12px;}
+  .letter b{color:var(--dark-text);}
+
+  .cta-final{
+    background:var(--navy-deep);color:var(--white);text-align:center;padding:90px 0;
+  }
+  .cta-final h3{font-size:30px;font-weight:800;margin-bottom:16px;}
+  .cta-final p{color:var(--light-text);margin-bottom:34px;font-size:15px;}
+
+  footer{background:var(--black-band);color:var(--light-text);padding:40px 0;font-size:13px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+  .footer-grid b{color:var(--white);}
+
+  @media(max-width:860px){
+    .hero h1{font-size:36px;}
+    .about-grid{grid-template-columns:1fr;}
+    .grs-grid{grid-template-columns:1fr;}
+    .steps5-track,.steps5-desc{grid-template-columns:1fr;}
+    .offer-grid{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <div class="logo">Zero <span>to</span> One Company</div>
+    <div class="nav-links">
+      <a href="#about">회사소개</a>
+      <a href="#grs">GRS</a>
+      <a href="#steps">운영프로세스</a>
+      <a href="#offer">컨설팅 의뢰</a>
+    </div>
+    <a class="nav-cta" href="https://open.kakao.com/o/sWDRY35h" target="_blank" rel="noopener">무료 진단 상담</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">회사소개서</div>
+    <h1>Zero to One Company</h1>
+    <p class="quote">"한국 브랜드의 아시아 시장(중화권, 동남아) 진출을 위한 최고의 파트너"</p>
+    <p class="quote small">"무(無)에서 유(有)를 창조하는 제로투원(0 to 1)"</p>
+
+    <div class="biz-card">
+      <img src="assets/business-card.png" alt="Zero to One Company 권성우 대표 명함">
+    </div>
+
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://open.kakao.com/o/sWDRY35h" target="_blank" rel="noopener">카카오톡 무료진단 상담신청</a>
+      <a class="btn btn-ghost" href="tel:010-2314-6335">전화 문의 010-2314-6335</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="eyebrow-dark">COMPANY</div>
+    <h2 class="section-title">제로투원 회사소개</h2>
+    <p class="section-sub">중화권 & 동남아권 전문가로서, 한국 기업의 뛰어난 콘텐츠와 제품이 국경을 넘어 새로운 가치를 창출하도록 돕습니다.</p>
+
+    <div class="about-grid">
+      <div>
+        <div class="pvv-item">
+          <h4>Philosophy</h4>
+          <p>무(無)에서 유(有)를 창조하는 '제로투원' 철학</p>
+        </div>
+        <div class="pvv-item">
+          <h4>Vision</h4>
+          <p>제로투원의 비전은 아무것도 없던 '제로(Zero)'의 상태에서 가능성을 발굴하고, 중화권/동남아 현지 시장에 적합한 전략적 실행을 통해 성공이라는 '원(One)'을 만들어내는 것입니다.</p>
+        </div>
+        <div class="pvv-item">
+          <h4>Value</h4>
+          <div class="value-list">
+            <div class="value-card">
+              <b>개척 (Pioneering)</b>
+              <span>아무도 가지 않은 길을 개척하는 용기와 전문성을 갖춥니다.</span>
+            </div>
+            <div class="value-card">
+              <b>연결 (Connecting)</b>
+              <span>한국의 우수한 브랜드와 아시아 시장의 잠재적 고객을 효율적으로 연결하는 최적의 솔루션을 제공합니다.</span>
+            </div>
+            <div class="value-card">
+              <b>성장 (Growing)</b>
+              <span>고객사의 브랜드가 아시아 시장에서 지속 가능한 성장을 이루도록 돕는 장기적인 파트너가 됩니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="expert-box">
+          <h4>중화권 & 동남아권 전문가</h4>
+          <p>한국 기업의 뛰어난 콘텐츠와 제품이 국경을 넘어 중화권(중국,홍콩) / 동남아 시장에서 새로운 가치를 창출하도록 돕는 선구자입니다.</p>
+          <p>크로스보더 이커머스 중국 및 동남아(쇼피,라자다) 입점부터 운영까지 원스탑 컨설팅 해 드립니다.</p>
+        </div>
+
+        <div class="process-box">
+          <h4>제로투원 협업 프로젝트 3단계</h4>
+
+          <div class="process-step">
+            <div class="process-num">01</div>
+            <div class="txt">
+              <h5>비즈니스 진단 및 목표 설정</h5>
+              <p>1) 기업 니즈 파악 &nbsp;2) 시장진단 및 가능성 탐색 &nbsp;3) 협업목표 수립</p>
+            </div>
+            <div class="process-tag" style="background:var(--gray-panel);color:var(--dark-text);">목표설정</div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-num">02</div>
+            <div class="txt">
+              <h5>맞춤형 전략 수립 및 계약</h5>
+              <p>1) 전략제안(B2B/B2C) &nbsp;2) 세부 실행계획 협의 &nbsp;3) 계약 체결</p>
+            </div>
+            <div class="process-tag">전략수립</div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-num">03</div>
+            <div class="txt">
+              <h5>실행 및 지속적 관리</h5>
+              <p>1) 본격적 실행 &nbsp;2) 성과 모니터링 및 보고 &nbsp;3) 성장 지원</p>
+            </div>
+            <div class="process-tag">성장지원</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRS -->
+<section class="grs" id="grs">
+  <div class="container">
+    <div class="eyebrow-dark">FRAMEWORK</div>
+    <h2 class="section-title">제로투원 GRS 프레임워크</h2>
+    <p class="section-sub">제로투원의 모든 컨설팅은 아래 3가지 축(GRS)을 기준으로 설계됩니다.</p>
+
+    <div class="grs-grid">
+      <div class="grs-card">
+        <div class="grs-circle">G</div>
+        <h4>Global</h4>
+        <p>중화권·동남아를 넘어 아시아 전역으로 확장 가능한 글로벌 시장 접근 전략. 단일 국가가 아닌 인접국 롤아웃까지 염두에 둔 로드맵을 설계합니다.</p>
+      </div>
+      <div class="grs-card">
+        <div class="grs-circle">R</div>
+        <h4>Recommerce</h4>
+        <p>신규 진출에 그치지 않고 현지 유통·재판매(리커머스) 채널을 통해 매출을 반복적으로 순환시키는 지속가능한 사업 구조를 구축합니다.</p>
+      </div>
+      <div class="grs-card">
+        <div class="grs-circle">S</div>
+        <h4>Signature</h4>
+        <p>고객사 고유의 브랜드 정체성을 현지 시장 정서에 맞게 현지화하여 가격 경쟁이 아닌 브랜드 차별화로 포지셔닝합니다.</p>
+      </div>
+    </div>
+
+    <p class="grs-footer">GRS는 3단계 협업 프로세스와 5단계 운영구축계단 전 구간을 관통하는 기준입니다.</p>
+  </div>
+</section>
+
+<!-- 5-STEP -->
+<section class="steps5" id="steps">
+  <div class="container">
+    <div class="eyebrow-dark">PROCESS</div>
+    <h2 class="section-title">제로투원 운영구축계단</h2>
+    <p class="section-sub">진단부터 지속 가능한 성장과 확장까지, 5단계로 체계화된 실행 로드맵입니다.</p>
+
+    <div class="steps5-track">
+      <div class="step5-block" style="height:110px;"><div class="tag">1단계</div><div class="title">진단 및 목표 설정</div></div>
+      <div class="step5-block" style="height:150px;"><div class="tag">2단계</div><div class="title">맞춤전략 수립</div></div>
+      <div class="step5-block" style="height:190px;"><div class="tag">3단계</div><div class="title">실행 및 시장진입</div></div>
+      <div class="step5-block" style="height:230px;"><div class="tag">4단계</div><div class="title">성과관리 및 운영최적화</div></div>
+      <div class="step5-block" style="height:270px;"><div class="tag">5단계</div><div class="title">지속 가능한 성장과 확장</div></div>
+    </div>
+    <div class="steps5-desc">
+      <p>귀사의 비즈니스를 깊이 이해하고, 아시아 시장 내 가능성을 진단합니다. 명확한 목표를 함께 설정하여 성공적인 첫걸음을 준비합니다.</p>
+      <p>진단을 통해 얻은 인사이트를 바탕으로, 귀사의 제품에 최적화된 시장 진출 전략을 수립합니다. (채널, 마케팅, 운영 등)</p>
+      <p>수립된 전략에 따라 크로스보더 이커머스 입점, 현지 유통 파트너십 구축 등 실제적인 시장 진입을 실행에 옮깁니다.</p>
+      <p>실시간 데이터를 기반으로 매출 성과를 추적하고, 효율적인 물류 및 고객 관리를 통해 운영의 안정성을 확보합니다.</p>
+      <p>단기적인 성공을 넘어, 브랜드 가치를 높이고 새로운 시장으로의 확장을 위한 장기적인 성장 로드맵을 제시합니다.</p>
+    </div>
+
+    <div class="steps5-band">
+      <div class="left"><b>해외진출 전문 디렉팅 &nbsp;+&nbsp; 실시간 B2B 소통 채널운영 &nbsp;+&nbsp; 비즈니스 진도레터 보고</b></div>
+      <div class="right">단계적인 운영을 통해 글로벌 시장에 성공적으로 진출할 수 있도록 체계적인 전략을 제공합니다.</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer" id="offer">
+  <div class="container">
+    <div class="offer-grid">
+      <div>
+        <div class="eyebrow-dark">CONSULTING OFFER</div>
+        <h2>We Connect Zero to One!</h2>
+        <p class="lead">제로투원을 통해 비즈니스를 중화권(중국,홍콩)/동남아시아 시장으로 진출하세요!</p>
+
+        <div class="letter">
+          <p><b>존경하는 기업 관계자님께</b></p>
+          <p>"제로투원 컴퍼니는 한국 기업이 보유한 우수한 콘텐츠와 제품이 중화권/동남아 시장에서 성공적으로 안착하고 성장할 수 있도록 돕는 전문 기업입니다.</p>
+          <p>귀사의 콘텐츠가 아시아 시장에서 '제로'를 넘어 '원'이 되는 기적을 만들 준비가 되셨다면, 제로투원 컴퍼니가 가장 확실한 길을 안내해 드리겠습니다."</p>
+        </div>
+      </div>
+      <div class="promo-img">
+        <img src="assets/promo-banner.png" alt="중국·홍콩 진출 컨설팅 - 타오바오/쇼피/라자다 입점까지">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-final">
+  <div class="container">
+    <h3>지금, 무료 진단 상담으로 첫걸음을 시작하세요</h3>
+    <p>기업 니즈 파악부터 시장진단, 협업목표 수립까지 — 첫 상담은 무료입니다.</p>
+    <a class="btn btn-primary" href="mailto:karma700@naver.com?subject=제로투원%20컨설팅%20문의">karma700@naver.com 으로 문의하기</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container footer-grid">
+    <div><b>Zero to One Company</b> — 권성우 대표</div>
+    <div>Mobile 010-2314-6335 &nbsp;|&nbsp; Email karma700@naver.com</div>
+  </div>
+</footer>
+
+</body>
+</html>
